@@ -15,3 +15,19 @@ vegaEmbed('#vis9', 'vis9_cyclone_map.json').catch(console.error);
 
 // Act 4: Conservation Outcomes
 vegaEmbed('#vis10', 'vis10_slope_graph.json').catch(console.error);
+
+// ── SCROLL ANIMATION TRIGGER ──
+// This forces your CSS to switch from opacity 0 to opacity 1 when scrolling
+document.addEventListener("DOMContentLoaded", function () {
+    const acts = document.querySelectorAll(".act");
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.05 }); // Triggers when 5% of the section is visible
+
+    acts.forEach(act => observer.observe(act));
+});
