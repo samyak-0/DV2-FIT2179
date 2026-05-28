@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Marine Park Management Composition",
+    "fontSize": 14,
+    "font": "Playfair Display",
+    "anchor": "start",
+    "color": "#0a1628"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "values": []
+  },
+  "transform": [
+    {
+      "sequence": {"start": 0, "stop": 100, "as": "id"}
+    },
+    {
+      "calculate": "floor(datum.id / 10)", "as": "row"
+    },
+    {
+      "calculate": "datum.id % 10", "as": "col"
+    },
+    {
+      "calculate": "datum.id < 33 ? 'Strict No-Take Protection (33%)' : 'Multiple-Use & Shipping (67%)'",
+      "as": "Zone_Type"
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "#ffffff",
+    "strokeWidth": 2,
+    "cornerRadius": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "col",
+      "type": "ordinal",
+      "axis": null
+    },
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null,
+      "sort": "descending"
+    },
+    "color": {
+      "field": "Zone_Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Strict No-Take Protection (33%)", "Multiple-Use & Shipping (67%)"],
+        "range": ["#2e8b57", "#4fb3d9"]
+      },
+      "legend": {"title": "Management Classification", "orient": "bottom", "labelFont": "DM Sans"}
+    },
+    "tooltip": [
+      {"field": "Zone_Type", "type": "nominal", "title": "Status"}
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "view": {"stroke": null}
+  }
+}
