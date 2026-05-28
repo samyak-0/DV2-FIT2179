@@ -10,17 +10,16 @@
   "width": "container",
   "height": 300,
   "data": {
-    "values": []
+    "sequence": {"start": 0, "stop": 100, "as": "id"}
   },
   "transform": [
     {
-      "sequence": {"start": 0, "stop": 100, "as": "id"}
+      "calculate": "floor(datum.id / 10)", 
+      "as": "row"
     },
     {
-      "calculate": "floor(datum.id / 10)", "as": "row"
-    },
-    {
-      "calculate": "datum.id % 10", "as": "col"
+      "calculate": "datum.id % 10", 
+      "as": "col"
     },
     {
       "calculate": "datum.id < 33 ? 'Strict No-Take Protection (33%)' : 'Multiple-Use & Shipping (67%)'",
