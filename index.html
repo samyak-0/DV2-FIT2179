@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinels of the Sea: Great Barrier Reef Crisis</title>
+    <title>Sentinels of the Sea — Great Barrier Reef Crisis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -11,67 +14,306 @@
 </head>
 <body>
 
-    <header>
-        <h1>Sentinels of the Sea</h1>
-        <h2>The Great Barrier Reef's Fight for Survival</h2>
-        <p class="meta">Author: Samyak Narendrakumar Chincholikar | Date: May 2026</p>
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">A Data Story by Samyak Narendrakumar Chincholikar · May 2026</p>
+            <h1 class="hero-title">Sentinels<br><em>of the Sea</em></h1>
+            <p class="hero-sub">The Great Barrier Reef stretches 2,300 kilometres along Australia's Queensland coast — the largest living structure on Earth, visible from space, home to 1,500 species of fish, and worth an estimated $6.4 billion to the Australian economy every year.<br><br>It is also under siege.</p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-num">2,300<span class="stat-unit">km</span></span>
+                    <span class="stat-label">Length of reef system</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">$6.4<span class="stat-unit">B</span></span>
+                    <span class="stat-label">Annual economic value</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">6</span>
+                    <span class="stat-label">Mass bleaching events since 1998</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">50<span class="stat-unit">%</span></span>
+                    <span class="stat-label">Coral lost since 1995</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
     </header>
 
-    <main class="container">
-        <section class="row">
-            <div class="text-col">
-                <h2>Act 1: Scale and Value</h2>
-                <p>Your narrative text goes here. Explain the immense economic and ecological value of the GBR to Australia.</p>
+    <main>
+
+        <!-- ACT DIVIDER -->
+        <div class="act-divider">
+            <div class="act-line"></div>
+            <span class="act-label">Act I</span>
+            <div class="act-line"></div>
+        </div>
+
+        <!-- ACT 1 -->
+        <section class="act" id="act1">
+            <div class="act-header">
+                <h2 class="act-title">Scale &amp; Value</h2>
+                <p class="act-subtitle">Before we count what's been lost, we need to understand what exists</p>
             </div>
-            <div class="vis-col">
-                <div id="vis1" class="vis-placeholder">Map 1</div>
-                <div id="vis2" class="vis-placeholder">Stacked Area</div>
-                <div id="vis3" class="vis-placeholder">Donut Chart</div>
+
+            <div class="narrative-block">
+                <div class="narrative-text">
+                    <h3>A Continent Beneath the Waves</h3>
+                    <p>The Great Barrier Reef Marine Park spans 344,400 square kilometres — larger than the United Kingdom. But it is not a single pristine wilderness. It is a patchwork of management zones, each with different rules, different protections, and vastly different ecological outcomes. Some sectors are fully off-limits to human activity. Others permit fishing, shipping, and tourism.</p>
+                    <p>Understanding this patchwork is essential context for everything that follows. The reefs that have fared best under environmental pressure are overwhelmingly concentrated in the most strictly protected zones — a pattern that will emerge again and again throughout this story.</p>
+                    <div class="callout-stat">
+                        <span class="callout-num">33%</span>
+                        <span class="callout-desc">of the reef is fully protected from fishing — the rest remains open to varying degrees of human use</span>
+                    </div>
+                </div>
+                <div class="narrative-vis">
+                    <div class="vis-container" id="vis1">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">🗺</div>
+                            <p>Map 1: Reef Health Overview</p>
+                            <p class="placeholder-sub">Choropleth + layered reef points<br>Circle size = reef area · Colour = coral health index</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row two-col">
+                <div class="chart-block">
+                    <h4 class="chart-title">Management Zone Distribution by Sector</h4>
+                    <p class="chart-caption">How Marine Park protection zones are spread across the Northern, Central and Southern reef — the Northern sector carries proportionally more no-take zones, which shapes its recovery pattern in later acts.</p>
+                    <div class="vis-container" id="vis2">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">📊</div>
+                            <p>Vis 2: Stacked Bar Chart</p>
+                            <p class="placeholder-sub">Zone type × latitudinal sector</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block">
+                    <h4 class="chart-title">What the Marine Park Is Made Of</h4>
+                    <p class="chart-caption">Each square represents 1% of total Marine Park area. The diversity of zone types reveals a complex management challenge — with full no-take protection covering only a third of the park.</p>
+                    <div class="vis-container" id="vis3">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">⬛</div>
+                            <p>Vis 3: Waffle Chart</p>
+                            <p class="placeholder-sub">100-square grid · Colour = zone type</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="row">
-            <div class="text-col">
-                <h2>Act 2: Environmental Stressors</h2>
-                <p>Your narrative text goes here. Describe rising sea surface temperatures and predator outbreaks.</p>
+        <!-- ACT DIVIDER -->
+        <div class="act-divider">
+            <div class="act-line"></div>
+            <span class="act-label">Act II</span>
+            <div class="act-line"></div>
+        </div>
+
+        <!-- ACT 2 -->
+        <section class="act" id="act2">
+            <div class="act-header">
+                <h2 class="act-title">The Reef Under Siege</h2>
+                <p class="act-subtitle">Three threats converging — and they don't take turns</p>
             </div>
-            <div class="vis-col">
-                <div id="vis4" class="vis-placeholder">Thermal Map 2</div>
-                <div id="vis5" class="vis-placeholder">Line Chart</div>
-                <div id="vis6" class="vis-placeholder">Interactive Scatter/Bar Dashboard</div>
+
+            <div class="narrative-block reverse">
+                <div class="narrative-text">
+                    <h3>Heat, Predators, and the Breaking Point</h3>
+                    <p>The reef faces a triple threat that compounds with every passing decade. Rising ocean temperatures trigger mass bleaching events — when water stays too warm for too long, corals expel their symbiotic algae and turn ghostly white. If the heat persists, they die. Crown-of-Thorns Starfish, whose population explosions are linked to agricultural runoff, consume coral tissue faster than it can regrow. And cyclones physically shatter reef structures, setting recovery back by years.</p>
+                    <p>What makes this crisis different from historical disturbances is the pace. The reef's natural recovery cycle takes 10–15 years. But bleaching events — once measured in decades — are now arriving every 3–5 years. The reef is being hit faster than it can heal.</p>
+                    <div class="callout-stat warning">
+                        <span class="callout-num">2016–17</span>
+                        <span class="callout-desc">Back-to-back mass bleaching events — the first time in recorded history the reef had no recovery window between events</span>
+                    </div>
+                </div>
+                <div class="narrative-vis">
+                    <div class="vis-container" id="vis4">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">🌡</div>
+                            <p>Map 2: Degree Heating Weeks</p>
+                            <p class="placeholder-sub">Spatial grid · Blue (low) → Red (severe stress)<br>Filterable by bleaching year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row full-width">
+                <div class="chart-block">
+                    <h4 class="chart-title">Sea Surface Temperature by Sector, 1985–2024</h4>
+                    <p class="chart-caption">Three lines tracking summer temperature trends across the Northern, Central and Southern reef. The dashed line marks the bleaching threshold — approximately 1°C above the monthly maximum mean. Notice how the Northern sector crosses this threshold earlier and more frequently, foreshadowing its disproportionate bleaching damage.</p>
+                    <div class="vis-container wide" id="vis5">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">📈</div>
+                            <p>Vis 5: Multi-line Temperature Chart</p>
+                            <p class="placeholder-sub">3 sector lines · Bleaching threshold annotation · 1985–2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row full-width">
+                <div class="chart-block">
+                    <h4 class="chart-title">Crown-of-Thorns Starfish vs Coral Cover — Which Reefs Are Most at Risk?</h4>
+                    <p class="chart-caption">Each point is a reef site. Where starfish density rises, coral cover collapses. <strong>Drag a selection box</strong> over any cluster of points to see the specific reefs affected — the bar chart updates in real time to show their names and locations.</p>
+                    <div class="vis-container wide" id="vis6">
+                        <div class="vis-placeholder interactive">
+                            <div class="placeholder-icon">🔗</div>
+                            <p>Vis 6: Linked Scatter + Bar Dashboard</p>
+                            <p class="placeholder-sub">Interactive · Drag to select · Bar chart updates on selection</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="row">
-            <div class="text-col">
-                <h2>Act 3: Shifting Baselines and Damage</h2>
-                <p>Your narrative text goes here. Cover the long term decline of coral tissue and physical storm paths.</p>
+        <!-- ACT DIVIDER -->
+        <div class="act-divider">
+            <div class="act-line"></div>
+            <span class="act-label">Act III</span>
+            <div class="act-line"></div>
+        </div>
+
+        <!-- ACT 3 -->
+        <section class="act" id="act3">
+            <div class="act-header">
+                <h2 class="act-title">Counting the Cost</h2>
+                <p class="act-subtitle">The cumulative damage — sector by sector, year by year</p>
             </div>
-            <div class="vis-col">
-                <div id="vis7" class="vis-placeholder">Two-Layer Treemap</div>
-                <div id="vis8" class="vis-placeholder">Diverging Bar Chart</div>
-                <div id="vis9" class="vis-placeholder">Cyclone Track Map 3</div>
+
+            <div class="narrative-block">
+                <div class="narrative-text">
+                    <h3>A Reef Transformed</h3>
+                    <p>Coral cover — the most fundamental measure of reef health — has declined across most of the Great Barrier Reef over the past four decades. But the decline is not uniform. Some sectors have suffered catastrophically. Others have partially held on. And when a cyclone strikes, the damage it leaves behind follows the storm's exact path with devastating precision.</p>
+                    <p>The composition of the reef itself has shifted. Where hard coral once dominated the seafloor, macroalgae and rubble now fill the space. In the worst-affected sectors, what was once a three-dimensional coral garden has become a flat, featureless gravel field — structurally simple, ecologically impoverished, and slow to recover even when threats are removed.</p>
+                    <div class="callout-stat warning">
+                        <span class="callout-num">weeks</span>
+                        <span class="callout-desc">A cyclone can undo a decade of coral growth in a matter of weeks — recovery always moves slower than destruction</span>
+                    </div>
+                </div>
+                <div class="narrative-vis">
+                    <div class="vis-container" id="vis7">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">🟦</div>
+                            <p>Vis 7: Two-Layer Treemap</p>
+                            <p class="placeholder-sub">Outer: geographic sector · Inner: benthic type<br>Hard coral / Soft coral / Macroalgae / Rubble</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row full-width">
+                <div class="chart-block">
+                    <h4 class="chart-title">Growth vs Loss — Three Decades of Disturbance</h4>
+                    <p class="chart-caption">Bars extending right show net coral growth during calm years. Bars extending left show coral loss during years with major environmental disturbances. Notice the profound asymmetry: recovery is gradual and incremental; loss is sudden and severe. The years 2016 and 2017 produced the widest left-pointing bars in the entire record.</p>
+                    <div class="vis-container wide" id="vis8">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">↔</div>
+                            <p>Vis 8: Diverging Bar Chart</p>
+                            <p class="placeholder-sub">Y = years · Right = growth · Left = loss · Annotated disturbance events</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-row full-width">
+                <div class="chart-block">
+                    <h4 class="chart-title">Cyclone Tracks and Storm Damage Across the Reef</h4>
+                    <p class="chart-caption">The background shows reef sectors coloured by the percentage of coral cover destroyed by storms. Overlaid are the actual physical paths of eight major cyclones — from Hamish in 2009 to Jasper in 2024. Trace any line and you can see the damage pattern it carved into the reef below.</p>
+                    <div class="vis-container wide tall" id="vis9">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">🌀</div>
+                            <p>Map 3: Cyclone Tracks + Storm Damage Choropleth</p>
+                            <p class="placeholder-sub">GeoJSON paths overlaid · 8 named cyclones · Hover for storm details</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="row">
-            <div class="text-col">
-                <h2>Act 4: Conservation Outcomes</h2>
-                <p>Your narrative text goes here. Conclude with recovery indices and targeted human management successes.</p>
+        <!-- ACT DIVIDER -->
+        <div class="act-divider">
+            <div class="act-line"></div>
+            <span class="act-label">Act IV</span>
+            <div class="act-line"></div>
+        </div>
+
+        <!-- ACT 4 -->
+        <section class="act" id="act4">
+            <div class="act-header">
+                <h2 class="act-title">Is There Still Hope?</h2>
+                <p class="act-subtitle">What targeted conservation actually achieves — and what it cannot</p>
             </div>
-            <div class="vis-col">
-                <div id="vis10" class="vis-placeholder">Slope Graph</div>
+
+            <div class="narrative-block reverse">
+                <div class="narrative-text">
+                    <h3>Recovery Is Real — But Uneven</h3>
+                    <p>The story of the reef is not only one of loss. The Crown-of-Thorns Starfish control program — where trained divers inject individual starfish with ox bile — has shown measurable results on specific reefs. Marine National Park zones, free from fishing pressure, consistently outperform adjacent general use zones when thermal stress hits. Targeted protection works.</p>
+                    <p>But there is a limit to what local management can achieve when the ocean itself is warming. No marine park boundary can stop a bleaching event driven by global atmospheric temperatures. The reefs that recovered in the slope graph below did so because they had the twin advantages of strict protection and slightly cooler water. Those advantages are narrowing every decade.</p>
+                    <p>The window is not yet closed. But it is closing.</p>
+                    <div class="callout-stat positive">
+                        <span class="callout-num">↑</span>
+                        <span class="callout-desc">Reefs inside no-take Marine National Park zones show consistently stronger recovery trajectories than those open to fishing and human activity</span>
+                    </div>
+                </div>
+                <div class="narrative-vis">
+                    <div class="vis-container" id="vis10">
+                        <div class="vis-placeholder">
+                            <div class="placeholder-icon">📉</div>
+                            <p>Vis 10: Slope Graph</p>
+                            <p class="placeholder-sub">Before vs After COTS eradication program<br>Lines colour-coded by zone type · Named reef annotations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing essay -->
+            <div class="closing-essay">
+                <blockquote class="closing-quote">
+                    "Recovery is possible. But it requires sustained protection, continued intervention, and most urgently, the reduction of thermal stress that no marine park boundary can stop."
+                </blockquote>
+                <p>The Great Barrier Reef is not a relic. It is alive — right now, growing, spawning, hosting. What this data shows is not an obituary but a warning. The reef's future is not yet written. What is clear is that the decisions made in the next decade — on emissions, on fishing pressure, on water quality, on funding for intervention programs — will determine whether future Australians inherit a living reef or a bleached monument to what once was.</p>
             </div>
         </section>
+
     </main>
 
-    <footer>
-        <p><strong>Metadata & Sources:</strong> Data retrieved from Australian Institute of Marine Science (AIMS) Long-Term Monitoring Program and Great Barrier Reef Marine Park Authority (GBRMPA) Geohub Portal.</p>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>About This Visualisation</h4>
+                <p>Created as part of FIT2179 Data Visualisation 2, Monash University, Semester 1 2026. Designed for an Australian general audience with no specialist knowledge required.</p>
+                <p class="footer-author">Samyak Narendrakumar Chincholikar · May 2026</p>
+            </div>
+            <div class="footer-col">
+                <h4>Data Sources</h4>
+                <ul class="footer-sources">
+                    <li><strong>AIMS LTMP</strong> — Australian Institute of Marine Science Long-Term Monitoring Program. Manta tow surveys 1993–2023 and fixed-site benthic surveys. <a href="https://eatlas.org.au/gbr/ltmp-data" target="_blank">eatlas.org.au/gbr/ltmp-data</a></li>
+                    <li><strong>NOAA Coral Reef Watch</strong> — Degree Heating Weeks and Sea Surface Temperature anomaly data, 1985–2024. <a href="https://coralreefwatch.noaa.gov" target="_blank">coralreefwatch.noaa.gov</a></li>
+                    <li><strong>IBTrACS</strong> — NOAA International Best Track Archive for Climate Stewardship. South Pacific cyclone tracks v04r01. <a href="https://www.ncei.noaa.gov/products/international-best-track-archive" target="_blank">ncei.noaa.gov</a></li>
+                    <li><strong>GBRMPA</strong> — Great Barrier Reef Marine Park Authority. Zoning GIS data. <a href="https://geohub-gbrmpa.hub.arcgis.com" target="_blank">geohub-gbrmpa.hub.arcgis.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Acknowledgements</h4>
+                <p>AI tools (Claude, Anthropic) were used to assist with code generation, grammar checking, and narrative refinement. All visualisation design, data selection, and analytical interpretation are the author's own work.</p>
+                <p>Icons: Unicode emoji. No copyrighted imagery used. All data is publicly available under open-access licences.</p>
+            </div>
+        </div>
+        <div class="footer-base">
+            <p>© 2026 Samyak Narendrakumar Chincholikar · FIT2179 Monash University · Released for academic assessment</p>
+        </div>
     </footer>
 
-    <script>
-        // Placeholder scripts for where your Vega-Lite JSON files will load later
-        // vegaEmbed('#vis1', 'map1.json');
-    </script>
+    <script src="charts.js"></script>
+
 </body>
 </html>
