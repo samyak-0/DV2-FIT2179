@@ -37,14 +37,16 @@
 
 html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
+/* ── ANIMATED OCEAN WAVE BACKGROUND ── */
 body {
     font-family: var(--font-body);
     color: var(--text-primary);
-    background: linear-gradient(180deg, #edf5f8 0%, #e2edf3 100%); /* Premium editorial gradient */
+    background: linear-gradient(180deg, #edf5f8 0%, #e2edf3 100%);
     line-height: 1.7;
     overflow-x: hidden;
     max-width: var(--max-width);
     margin: 0 auto;
+    position: relative;
 }
 
 /* HERO LAYER */
