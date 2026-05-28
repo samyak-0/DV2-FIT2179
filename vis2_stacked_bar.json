@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Cross-Shelf Reef Distribution by Latitudinal Sector",
+    "fontSize": 14,
+    "font": "Playfair Display",
+    "anchor": "start",
+    "color": "#0a1628"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "manta-tow-by-reef.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.SHELF == 'I' ? 'Inshore' : datum.SHELF == 'M' ? 'Mid-Shelf' : 'Outer-Shelf'",
+      "as": "Shelf_Location"
+    }
+  ],
+  "mark": {"type": "bar", "tooltip": true},
+  "encoding": {
+    "x": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {"format": "%", "title": "Proportion of Surveyed Reefs"}
+    },
+    "y": {
+      "field": "SECTOR",
+      "type": "nominal",
+      "axis": {"title": "Latitudinal Sector"},
+      "sort": "descending"
+    },
+    "color": {
+      "field": "Shelf_Location",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Inshore", "Mid-Shelf", "Outer-Shelf"],
+        "range": ["#4fb3d9", "#1a7ab5", "#0e4d7a"]
+      },
+      "legend": {"title": "Shelf Zone", "orient": "bottom", "labelFont": "DM Sans"}
+    },
+    "tooltip": [
+      {"field": "SECTOR", "type": "nominal", "title": "Sector"},
+      {"field": "Shelf_Location", "type": "nominal", "title": "Shelf"},
+      {"aggregate": "count", "type": "quantitative", "title": "Reef Count"}
+    ]
+  },
+  "config": {
+    "background": "transparent",
+    "axis": {"labelFont": "DM Sans", "titleFont": "DM Sans"}
+  }
+}
