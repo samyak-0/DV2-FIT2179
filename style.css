@@ -4,49 +4,59 @@
    ============================================================ */
 
 :root {
-    --ocean-deep:     #0a1628;
-    --ocean-mid:      #0d2b4e;
-    --ocean-surface:  #0e4d7a;
-    --ocean-light:    #1a7ab5;
-    --ocean-pale:     #4fb3d9;
-    --ocean-foam:     #a8dce8;
-    --ocean-mist:     #e8f6fa;
-    --coral-warm:     #e07b39;
-    --coral-light:    #f4b47a;
-    --reef-green:     #2e8b57;
-    --text-primary:   #0a1628;
-    --text-secondary: #3d5a73;
-    --text-muted:     #6b8fa8;
-    --text-inverse:   #f0f8ff;
-    --surface-0:      #edf5f8;
-    --surface-1:      #ffffff;
-    --surface-2:      #dbecf4;
-    --border-light:   rgba(14, 77, 122, 0.12);
-    --border-mid:     rgba(14, 77, 122, 0.25);
-    --font-display:   'Playfair Display', Georgia, serif;
-    --font-body:      'DM Sans', system-ui, sans-serif;
-    --font-mono:      'DM Mono', 'Courier New', monospace;
-    --max-width:      1920px;
-    --content-width:  1400px;
-    --section-pad:    clamp(3rem, 5vw, 6rem);
-    --gutter:         clamp(1.5rem, 3vw, 3rem);
-    --shadow-md:      0 8px 32px rgba(10,22,40,0.08);
-}
+    /* Core deep oceanic palette */
+    --ocean-deep:     #050c14;   /* Midnight ocean depth */
+    --ocean-mid:      #0a1625;   /* Deep sea card backing */
+    --ocean-surface:  #0e4d7a;   
+    --ocean-light:    #1a7ab5;   
+    --ocean-pale:     #4fb3d9;   
+    --ocean-foam:     #a8dce8;   /* Light sea foam accent text */
+    --ocean-mist:     #12243a;   
 
+    /* Surfaces */
+    --surface-0:      #050c14;   /* Global page background */
+    --surface-1:      #0b1726;   /* Rich dark container blocks */
+    --surface-2:      #12243a;   
+    --surface-3:      #1a324f;   
+
+    /* Neutral text adjustments for dark mode */
+    --text-primary:   #f0f8ff;   /* Crisp white-blue text */
+    --text-secondary: #b0cbdc;   /* Soft ice-blue body text */
+    --text-muted:     #6b8fa8;   
+    --text-inverse:   #050c14;   
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
-/* ── ANIMATED OCEAN WAVE BACKGROUND ── */
 body {
     font-family: var(--font-body);
     color: var(--text-primary);
-    background: linear-gradient(180deg, #edf5f8 0%, #e2edf3 100%);
+    background: var(--surface-0);
     line-height: 1.7;
     overflow-x: hidden;
     max-width: var(--max-width);
     margin: 0 auto;
     position: relative;
+}
+
+/* Global animated watermark wave pattern configured for dark backgrounds */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 Q15 20 30 30 Q45 40 60 30' stroke='rgba(168, 220, 232, 0.12)' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 80px 80px;
+    animation: wave-drift 25s linear infinite;
+    opacity: 1;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes wave-drift {
+    from { background-position: 0 0; }
+    to   { background-position: 80px 0; }
 }
 
 /* HERO LAYER */
