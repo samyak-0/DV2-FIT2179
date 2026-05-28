@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "manta-tow-by-reef.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.REPORT_YEAR == 2023"
+    }
+  ],
+  "vconcat": [
+    {
+      "title": {
+        "text": "Predator Density vs. Hard Coral Baselines (2023)",
+        "font": "Playfair Display",
+        "fontSize": 15,
+        "anchor": "start"
+      },
+      "width": "container",
+      "height": 220,
+      "params": [
+        {
+          "name": "brush",
+          "select": {"type": "interval", "encodings": ["x", "y"]}
+        }
+      ],
+      "mark": {"type": "circle", "size": 60, "opacity": 0.75},
+      "encoding": {
+        "x": {
+          "field": "MEAN_COTS_PER_TOW",
+          "type": "quantitative",
+          "axis": {"title": "Crown-of-Thorns Starfish (Mean per Tow)"}
+        },
+        "y": {
+          "field": "MEAN_LIVE_CORAL",
+          "type": "quantitative",
+          "axis": {"title": "Live Coral Cover %"}
+        },
+        "color": {
+          "condition": {
+            "param": "brush",
+            "field": "SECTOR",
+            "type": "nominal",
+            "scale": {"scheme": "tableau10"}
+          },
+          "value": "#d0e6f0"
+        },
+        "tooltip": [
+          {"field": "REEF_NAME", "type": "nominal", "title": "Reef"},
+          {"field": "SECTOR", "type": "nominal", "title": "Sector"},
+          {"field": "MEAN_LIVE_CORAL", "type": "quantitative", "title": "Coral %", "format": ".1f"},
+          {"field": "MEAN_COTS_PER_TOW", "type": "quantitative", "title": "COTS Count", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "title": {
+        "text": "Selected Reef Breakdown",
+        "font": "Playfair Display",
+        "fontSize": 13,
+        "anchor": "start"
+      },
+      "width": "container",
+      "height": 150,
+      "transform": [
+        {"filter": {"param": "brush"}},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "MEAN_LIVE_CORAL", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 12"}
+      ],
+      "mark": {"type": "bar", "color": "#e07b39", "cornerRadiusEnd": 4},
+      "encoding": {
+        "x": {
+          "field": "MEAN_LIVE_CORAL",
+          "type": "quantitative",
+          "axis": {"title": "Live Coral Cover %"}
+        },
+        "y": {
+          "field": "REEF_NAME",
+          "type": "nominal",
+          "axis": {"title": null},
+          "sort": "-x"
+        },
+        "tooltip": [
+          {"field": "REEF_NAME", "type": "nominal", "title": "Reef"},
+          {"field": "MEAN_LIVE_CORAL", "type": "quantitative", "title": "Coral Cover %", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "axis": {"labelFont": "DM Sans", "titleFont": "DM Sans"}
+  }
+}
