@@ -7,7 +7,7 @@
     "subtitleFont": "DM Sans",
     "subtitleFontSize": 14
   },
-  "width": 520,
+  "width": "container",
   "height": 640,
   "projection": {
     "type": "mercator",
@@ -43,7 +43,7 @@
       "encoding": {
         "x":  { "value": 0   },
         "y":  { "value": 0   },
-        "x2": { "value": 520 },
+        "x2": { "signal": "width" },
         "y2": { "value": 640 }
       }
     },

@@ -500,6 +500,12 @@ body {
 #vis9 .vega-embed canvas,
 #vis9 .vega-embed svg { width: 100% !important; }
 
+/* vis1 map — force full container width */
+#vis1 { min-height: 640px; }
+#vis1 .vega-embed,
+#vis1 .vega-embed > div,
+#vis1 .vega-embed svg { width: 100% !important; }
+
 /* vis11 heatmap */
 #vis11 { min-height: 580px; }  /* was 660px */
 
@@ -557,12 +563,6 @@ body {
 }
 
 /* Narrative vis */
-.narrative-vis {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 .narrative-vis .vis-container {
     min-height: 580px;    /* was 540px */
     box-shadow: var(--shadow-md);
@@ -713,6 +713,20 @@ body {
 
 .vega-embed canvas,
 .vega-embed svg { border-radius: 8px; }
+
+/* Make slider/select control labels visible inside the light chart cards */
+.vega-bind-name,
+.vega-bind label,
+.vega-bind input[type="range"],
+.vega-embed .vega-bind-name,
+.vega-embed .vega-bindings,
+.vega-embed .vega-bindings label,
+.vega-embed .vega-bindings select,
+.vega-embed .vega-bindings input {
+    color: var(--text-primary) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.95rem !important;
+}
 
 .vg-tooltip {
     font-family: var(--font-body) !important;
