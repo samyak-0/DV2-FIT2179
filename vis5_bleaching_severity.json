@@ -8,7 +8,7 @@
     "subtitleFontSize": 15
   },
   "width": "container",
-  "height": 420,
+  "height": 320,
   "data": {
     "url": "coral_bleaching_multifactor_dataset.csv"
   },

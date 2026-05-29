@@ -7,7 +7,7 @@
     "subtitleFont": "DM Sans"
   },
   "width": "container",
-  "height": 720,
+  "height": 560,
   "projection": {
     "type": "mercator",
     "center": [

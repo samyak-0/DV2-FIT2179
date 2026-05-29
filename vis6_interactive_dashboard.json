@@ -42,7 +42,7 @@
   "vconcat": [
     {
       "width": "container",
-      "height": 375,
+      "height": 280,
       "title": {
         "text": "Crown-of-Thorns Starfish Density vs. Live Coral Cover",
         "subtitle": "COTS eat coral faster than it regrows — drag a box to select reefs and update the chart below",
@@ -239,7 +239,7 @@
     },
     {
       "width": "container",
-      "height": 300,
+      "height": 230,
       "title": {
         "text": "Coral Cover at Selected Reefs",
         "subtitle": "Top 12 reefs in your selection sorted by coral cover — drag a box above to populate",
