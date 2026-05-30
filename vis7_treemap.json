@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Seafloor Composition by Region",
-    "subtitle": "Proportional cover of hard coral, soft coral, and macroalgae · Use the year selector to track change over time · Note: soft coral is low at these inshore sites",
+    "subtitle": "Proportional cover of hard coral, soft coral, and macroalgae · Use the year selector to track change",
     "subtitleColor": "#3d5a73",
     "subtitleFont": "DM Sans",
     "subtitleFontSize": 15

@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Mean Coral Cover by Sector and Shelf Zone",
-    "subtitle": "Outer-shelf reefs consistently support higher coral cover than inshore reefs — protection from runoff and fishing pressure is key",
+    "subtitle": "Outer-shelf reefs carry more coral than inshore — buffered from runoff and fishing pressure",
     "subtitleColor": "#3d5a73",
     "subtitleFont": "DM Sans",
     "subtitleFontSize": 15

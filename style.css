@@ -766,12 +766,17 @@ body {
     font-size: 0.95rem !important;
 }
 
-/* vis1 and vis4 bind labels — force light colour so they're visible on the
-   dark page background on deployed/GitHub URLs (Vega renders these outside
-   the SVG so they don't sit on the #daeef7 card bg as expected locally) */
-#vis1 .vega-bind-name, #vis1 .vega-bindings label, #vis1 .vega-bindings select, #vis1 .vega-bindings input,
-#vis4 .vega-bind-name, #vis4 .vega-bindings label, #vis4 .vega-bindings select, #vis4 .vega-bindings input {
+/* vis1 and vis4 bind labels — light blue label text on dark page bg,
+   but select/input contents stay black (they have a white native bg) */
+#vis1 .vega-bind-name, #vis1 .vega-bindings label,
+#vis4 .vega-bind-name, #vis4 .vega-bindings label {
     color: #a8dce8 !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.95rem !important;
+}
+#vis1 .vega-bindings select, #vis1 .vega-bindings input,
+#vis4 .vega-bindings select, #vis4 .vega-bindings input {
+    color: #000000 !important;
     font-family: var(--font-body) !important;
     font-size: 0.95rem !important;
 }
